@@ -4,10 +4,18 @@
     let isInputValid = false;
 
     let playerSelection;
-    let computerSelection = getComputerChoice();
+    let computerSelection;
 
-    function randomize() {
-        return randomRPC = rpc[Math.floor(Math.random() * rpc.length)];
+    function getRandomChoice() {
+        let randomNumber = Math.floor(Math.random() * 3)
+        switch (randomNumber) {
+            case 0:
+                return 'ROCK'
+            case 1:
+                return 'PAPER'
+            case 2:
+                return 'SCISSORS'
+        }
     }
 
     function getPlayerSelection() {
@@ -15,7 +23,7 @@
     }
 
     function getComputerChoice() {
-        return randomize();
+        return getRandomChoice().toLowerCase();
     }
 
     function playRound(playerSelection, computerChoice) {
@@ -33,9 +41,9 @@
     function game() {
         let round = 0;
         while(round < 5) {
-            playerSelection = getPlayerSelection();
+            playerSelection = getPlayerSelection().toLowerCase();
+             computerSelection = getRandomChoice().toLowerCase();
             console.log("Round: " + round)
-            randomize();
             console.log(playRound(playerSelection, computerSelection));
             round++;
         }
